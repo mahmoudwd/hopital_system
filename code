@@ -8,14 +8,19 @@ int length[Max_Specializations];
 int menu() {
 	int choice = -1;
 	while (choice == -1) {
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+		cout << "Select  Optian:\n";
+		cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 		cout << "Enter Your choice: \n";
 		cout << "1) Add new patient\n";
 		cout << "2) Print all patients\n";
 		cout << "3) Get next patient\n";
 		cout << "4) Exit\n";
+		cout << "---------------------\n";
+		cout << "Enter Your choice: ";
 		cin >> choice;
 		if (choice < 1 || choice > 4) {
-			cout << "Invalid choice Try again\n";
+			cout << "Invalid choice Try again!!\n";
 			choice = -1;
 		}
 	}
@@ -38,11 +43,28 @@ void shift_lift(int spec) {
 bool add_patients() {
 	int spec,st;
 	string name;
-	cout<< "Enter specialization, name, statis: ";
-	cin >> spec >> name >> st;
+	cout << "======================================\n";
+	cout << "Select specialization: \n";
+	cout << "----------------------\n";
+	cout << "[01] : Internal Medicine" << " [06] : Endocrinology" << "         [11] : Cardiology" << "                  [16] : Gastroenterology\n";
+	cout << "[02] : Ophthalmology" << "     [07] : Pediatrics" << "            [12] : Ear, nose and throat (ENT)" << "  [17] : Neurology\n";
+	cout << "[03] : Oncology" << "          [08] : Urology" << "               [13] : Dermatology" << "                 [18] : Oncology\n";
+	cout << "[04] : Hematology" << "        [09] : General Practitioner" << "  [14] : Emergency medicine" << "          [19] : Dentistry\n";
+	cout << "[05] : Obstetrics" << "        [10] : Nephrology" << "            [15] : Allergy and immunology" << "      [20] : Hepatology\n";
+	cin >> spec;
+	cout << "\n=======================================================================================\n";
+	cout << "\nEnter Your name: ";
+	cin >> name;
+	cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "Enter Your static: \n";
+	cout << "-------------------\n";
+	cout << "[0]regular\n";
+	cout << "[1]urgent\n";
+	
+	cin >> st;
 	int pot = length[spec];
 	if (pot > spots) {
-		cout<< "Sorry we can't add more patients for the specialization\n";
+		cout<< "Sorry we can't add more patients for this specialization\n";
 		return false;
 	}
 	if (st == 0) {
@@ -74,10 +96,11 @@ void print_patient(int spec) {
 				cout << "regular\n";
 			}
 		}
+		cout << "*********************************************\n";
 	}
 }
 void print_patients() {
-	cout << "=========================================\n";
+	cout << "=============================================\n\n";
 	for (int spec = 0; spec < Max_Specializations; spec++) {
 		print_patient(spec);
 	}
@@ -110,6 +133,9 @@ void hospital_system() {
 			get_patient();
 		}
 		else {
+			cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+			cout << "//////////////Shutting Dowen...//////////////\n";
+			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 			break;
 		}
 	}
